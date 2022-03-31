@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './core/components';
+import { LoginComponent, RegisterComponent } from './components';
+import { IsLoggedGuardService } from './services';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: LoginComponent
-  }
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'tickets', loadChildren: () => import('@features').then(m => m.TicketsModule), canActivate: [IsLoggedGuardService] }
 ];
 
 @NgModule({

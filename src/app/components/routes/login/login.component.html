@@ -1,0 +1,30 @@
+<h1>Login</h1>
+<form [formGroup]="form" (submit)="onSubmit()">
+  <div class="alert alert-danger" *ngIf="invalidLogin">
+    <b>Cannot log in</b>: Please check your credentials.
+  </div>
+  <div class="form-group mb-2">
+    <label for="username" class="mb-1">Username (required):</label>
+    <input class="form-control" type="email" placeholder="Email" inputmode="email" formControlName="username"
+      [ngClass]="(form | validityClassControl : 'username' : submitted)">
+    <div class="invalid-feedback" *ngIf="form.get('username')?.errors as errors">
+      <div *ngIf="errors['required']">Should have a value.</div>
+      <div *ngIf="errors['email']">Should be an email.</div>
+    </div>
+  </div>
+  <div class="form-group mb-3">
+    <label for="password" class="mb-1">Password (required):</label>
+    <input class="form-control" type="password" placeholder="Password" formControlName="password"
+      [ngClass]="(form | validityClassControl : 'password' : submitted)">
+    <div class="invalid-feedback" *ngIf="form.get('password')?.errors as errors">
+      <div *ngIf="errors['required']">Should have a value.</div>
+      <div *ngIf="errors['minlength'] as error">Should have {{error.requiredLength}} characters.</div>
+      <div *ngIf="errors['onedigit'] as error">{{error}}.</div>
+      <div *ngIf="errors['onelowercase'] as error">{{error}}.</div>
+      <div *ngIf="errors['oneuppercase'] as error">{{error}}.</div>
+      <div *ngIf="errors['onespecialchar'] as error">{{error}}</div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary mb-3 me-2">Log in</button>
+  <a [routerLink]="['/register']" class="btn btn-outline-primary mb-3">Register</a>
+</form>

@@ -1,0 +1,54 @@
+<h1>Register</h1>
+<form [formGroup]="form" (submit)="onSubmit()">
+  <div class="alert alert-warning" *ngIf="errorRegistering">
+    <b>Cannot register</b>: Please try again later.
+  </div>
+  <div class="form-group mb-2">
+    <label for="username" class="mb-1">Username (required):</label>
+    <input class="form-control" type="email" placeholder="Email" inputmode="email" formControlName="username"
+      [ngClass]="(form | validityClassControl : 'username' : submitted)">
+    <div class="invalid-feedback" *ngIf="form.get('username')?.errors as errors">
+      <div *ngIf="errors['required']">Should have a value..</div>
+      <div *ngIf="errors['email']">Should be an email.</div>
+      <div *ngIf="errors['usernametaken'] as error">{{error}}.</div>
+    </div>
+  </div>
+  <div class="form-group mb-2">
+    <label for="password" class="mb-1">Password (required):</label>
+    <input class="form-control" type="password" placeholder="Password" formControlName="password"
+      [ngClass]="form.hasError('passwordMismatch') ? 'is-invalid' : (form | validityClassControl : 'password' : submitted)">
+    <div class="invalid-feedback">
+      <ng-container *ngIf="form.get('password')?.errors as errors">
+        <div *ngIf="errors['required']">Should have a value.</div>
+        <div *ngIf="errors['minlength'] as error">Should have {{error.requiredLength}} characters.</div>
+        <div *ngIf="errors['onedigit'] as error">{{error}}.</div>
+        <div *ngIf="errors['onelowercase'] as error">{{error}}.</div>
+        <div *ngIf="errors['oneuppercase'] as error">{{error}}.</div>
+        <div *ngIf="errors['onespecialchar'] as error">{{error}}</div>
+      </ng-container>
+      <div *ngIf="form.hasError('passwordMismatch')">
+        {{form.getError('passwordMismatch')}}
+      </div>
+    </div>
+  </div>
+  <div class="form-group mb-3">
+    <label for="repeatPassword" class="mb-1">Repeat password (required):</label>
+    <input class="form-control" type="password" placeholder="Password" formControlName="repeatPassword"
+      [ngClass]="form.hasError('passwordMismatch') ? 'is-invalid' : (form | validityClassControl : 'repeatPassword' : submitted)">
+    <div class="invalid-feedback">
+      <ng-container *ngIf="form.get('repeatPassword')?.errors as errors">
+        <div *ngIf="errors['required']">Should have a value.</div>
+        <div *ngIf="errors['minlength'] as error">Should have {{error.requiredLength}} characters.</div>
+        <div *ngIf="errors['onedigit'] as error">{{error}}.</div>
+        <div *ngIf="errors['onelowercase'] as error">{{error}}.</div>
+        <div *ngIf="errors['oneuppercase'] as error">{{error}}.</div>
+        <div *ngIf="errors['onespecialchar'] as error">{{error}}</div>
+      </ng-container>
+      <div *ngIf="form.hasError('passwordMismatch')">
+        {{form.getError('passwordMismatch')}}
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary mb-3 me-2">Register</button>
+  <a [routerLink]="['/login']" class="btn btn-outline-primary mb-3">Log in</a>
+</form>
