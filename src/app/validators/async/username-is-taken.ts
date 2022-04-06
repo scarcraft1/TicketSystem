@@ -1,6 +1,6 @@
 import { AbstractControl, AsyncValidatorFn, ValidationErrors } from '@angular/forms';
+import { AuthService } from '@shared/services';
 import { debounceTime, map, Observable, of, switchMap, take } from 'rxjs';
-import { AuthService } from '../../services/auth.service';
 
 export function UsernameIsTaken(service: AuthService): AsyncValidatorFn {
   return (control: AbstractControl): Observable<ValidationErrors | null> => {

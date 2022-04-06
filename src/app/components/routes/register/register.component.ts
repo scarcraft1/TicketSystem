@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '@shared/services/';
 import { AsyncValidators, SyncValidators } from 'src/app/validators';
-import { AuthService } from '../../../services/';
 
 @Component({
   selector: 'app-register',

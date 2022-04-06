@@ -1,1 +1,15 @@
-<p>edit works!</p>
+<h1>Edit a ticket</h1>
+<form [formGroup]="form" (submit)="submit()">
+  <div class="form-group mb-3">
+    <label for="message" class="mb-2">Message (required):</label>
+    <textarea formControlName="message" id="message" class="form-control"
+      [ngClass]="(form | validityClassControl : 'message' : submitted)"></textarea>
+    <div class="invalid-feedback" *ngIf="form.get('message')?.errors as errors">
+      <div *ngIf="errors['required']">Should have a value.</div>
+      <div *ngIf="errors['maxlength'] as error">Should have {{error.requiredLength }}
+        characters or less.</div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary me-2 mb-3">Open</button>
+  <a [routerLink]="['..']" class="btn btn-outline-primary mb-3">Return to the tickets list</a>
+</form>

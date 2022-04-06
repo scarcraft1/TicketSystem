@@ -1,7 +1,7 @@
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { CoreModule } from '@core';
+import { ValidityClassControlPipeModule } from '@shared/pipes';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { COMPONENTS } from './components';
@@ -12,11 +12,10 @@ import { COMPONENTS } from './components';
     ...COMPONENTS
   ],
   imports: [
+    CoreModule,
     BrowserModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ValidityClassControlPipeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,20 @@
+<ul class="pagination">
+  <li class="page-item" [ngClass]="{disabled: page <= 0}">
+    <button class="page-link" aria-label="Previous" [disabled]="page  <= 0" (click)="page = page - 1">
+      <span aria-hidden="true">&laquo;</span>
+    </button>
+  </li>
+  <ng-container *ngFor="let item of pages">
+    <li class="page-item disabled" *ngIf="item === page" aria-current="page">
+      <span class="page-link">{{item+1}}</span>
+    </li>
+    <li class="page-item" *ngIf="item !== page">
+      <button class="page-link" (click)="page = item">{{item+1}}</button>
+    </li>
+  </ng-container>
+  <li class="page-item" [ngClass]="{disabled: (page + 1) >= totalPages}">
+    <button class="page-link" aria-label="Next" [disabled]="(page + 1) >= totalPages" (click)="page = page + 1">
+      <span aria-hidden="true">&raquo;</span>
+    </button>
+  </li>
+</ul>

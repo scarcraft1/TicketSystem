@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  endpoint: 'https://crudcrud.com/api/dab3d36b8091476da6e5c8ee26696702'
+  endpoint: 'https://crudcrud.com/api/55b38ac7f5cf4bd1bd3e101ce7d7c9ef'
 };
 
 /*

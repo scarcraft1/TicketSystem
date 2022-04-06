@@ -1,8 +1,6 @@
-import { PIPES } from './pipes';
 import { ROUTES } from './routes';
 
-const COMPONENTS = [...ROUTES, ...PIPES]
+const COMPONENTS = [...ROUTES]
 
-export * from './pipes';
 export * from './routes';
 export { COMPONENTS };

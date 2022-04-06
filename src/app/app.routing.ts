@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent, RegisterComponent } from './components';
-import { IsLoggedGuardService } from './services';
+import { IsLoggedGuardService } from '@shared/guards';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },

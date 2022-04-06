@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@environments/environment';
+import { AuthService } from '@shared/services';
 import { Observable, of, switchMap } from 'rxjs';
-import { AuthService } from 'src/app/services';
 import { Ticket } from '../models';
 
 const API_URL = environment.endpoint + '/tickets';

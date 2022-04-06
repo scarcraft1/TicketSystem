@@ -1,9 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@environments/environment';
-import { HttpClient } from '@angular/common/http';
-import { Observable, map, switchMap, of } from 'rxjs';
+import { AuthService } from '@shared/services';
+import { map, Observable, of, switchMap } from 'rxjs';
 import { Answer } from '../models';
-import { AuthService } from '../../../services/auth.service';
 
 const API_URL = environment.endpoint + '/answers';
 
