@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { TicketsService } from '../../../services/tickets.service';
 
 @Component({
@@ -14,7 +14,8 @@ export class NewComponent {
 
   constructor(
     private readonly fb: FormBuilder,
-    private service: TicketsService,
+    private readonly service: TicketsService,
+    private readonly route: ActivatedRoute,
     private readonly router: Router) {
     this.form = this.createForm();
   }
@@ -23,7 +24,7 @@ export class NewComponent {
     this.submitted = true;
     if(this.form.valid) {
       this.service.open(this.form.get('message')?.value)
-      .subscribe(() => this.router.navigate(['..']));
+      .subscribe(() => this.router.navigate(['..'], { relativeTo: this.route }));
     }
   }
 

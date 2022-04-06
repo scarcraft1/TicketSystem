@@ -7,7 +7,7 @@
         <th>Author</th>
         <th>Creation Date</th>
         <th>Message</th>
-        <th>Actions</th>
+        <th class="text-end">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -21,7 +21,7 @@
               *ngIf="(ticket.status === 'NEW') && (ticket.author | isLoggedUser)">Edit</a>
             <a [routerLink]="[ticket._id, '/answers']" class="btn btn-primary btn-sm m-1"
               *ngIf="(ticket.status !== 'CLOSED') && !(ticket.author | isLoggedUser)">
-              <ng-container *ngIf="ticket.answers.length">Add an answer</ng-container>
+              <ng-container *ngIf="!ticket.answers.length">Add an answer</ng-container>
               <ng-container *ngIf="ticket.answers.length === 1">View the answer</ng-container>
               <ng-container *ngIf="ticket.answers.length > 1">View the {{ticket.answers.length}} answers</ng-container>
             </a>
